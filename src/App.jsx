@@ -645,7 +645,7 @@ export default function DiscoveryPresentation() {
                 <div style={{ display: "inline-block", padding: "6px 16px", borderRadius: 100, border: "1px solid #F59E0B33", fontSize: 12, letterSpacing: 2, textTransform: "uppercase", color: "#F59E0B", marginBottom: 16 }}>
                   Impacto inmediato
                 </div>
-                <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 36, fontWeight: 600, marginBottom: 12 }}>
+                <h2 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 40, fontWeight: 600, letterSpacing: "-0.3px", marginBottom: 12 }}>
                   Quick Wins · 0-9 meses
                 </h2>
                 <p style={{ color: "#5A8B6A", fontSize: 15, maxWidth: 540 }}>
