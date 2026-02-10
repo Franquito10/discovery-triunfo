@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from "react";
+const logoSrc = "/logo-blanco.webp";
+
 
 // ─── DATA ────────────────────────────────────────────────────────────
 const AREAS = [
@@ -59,7 +61,7 @@ const AREAS = [
     ],
     findings: [
       "Demanda real del mercado y voluntad comercial de expandir, con oportunidad de habilitar herramientas digitales que acompañen.",
-      "Otros Riesgos representa una oportunidad concreta: 1.500 cotizaciones mensuales gestionadas por email, con potencial de mejora hacia 30-40% de conversión.",
+      "Otros Riesgos representa una oportunidad concreta: 1.500 cotizaciones mensuales gestionadas por email, con potencial de conversión significativamente mayor según benchmarks del sector.",
       "El canal PAS necesita estabilidad como prioridad — cada interrupción del sistema es una oportunidad que se cierra en otra compañía."
     ],
     opportunities: [
@@ -134,7 +136,7 @@ const AREAS = [
       "Campañas y comunicaciones personalizadas basadas en datos reales"
     ],
     docs: ["Diagnóstico de experiencia", "Mapa de journey del cliente", "Propuesta CRM"]
-  }
+  },
 ];
 
 const QUICK_WINS = [
@@ -144,11 +146,7 @@ const QUICK_WINS = [
   { title: "Documentación de Conocimiento Crítico", desc: "Plan de transferencia para reducir dependencia de personas específicas.", time: "Continuo desde mes 1", icon: "📋" }
 ];
 
-
-
 // ─── COMPONENTS ──────────────────────────────────────────────────────
-
-
 
 function FadeIn({ children, delay = 0, direction = "up", className = "" }) {
   const [visible, setVisible] = useState(false);
@@ -199,8 +197,8 @@ export default function DiscoveryPresentation() {
       <style>{`
         * { box-sizing: border-box; margin: 0; padding: 0; }
         ::selection { background: #00D67E33; color: #00D67E; }
-        .nav-item { cursor: pointer; padding: 10px 20px; border-radius: 100px; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; transition: all 0.3s; border: 1px solid transparent; }
-        .nav-item:hover { border-color: #00D67E44; }
+        .nav-item { cursor: pointer; padding: 10px 20px; border-radius: 100px; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; transition: all 0.3s; border: 1px solid transparent; color: #7A9B8A; }
+        .nav-item:hover { border-color: #00D67E44; color: #B0D4C0; }
         .nav-item.active { background: #00D67E18; border-color: #00D67E44; color: #00D67E; }
         .org-node { cursor: pointer; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); border: 1px solid #1A3D2A; border-radius: 16px; padding: 24px; background: linear-gradient(135deg, #0A1F14 0%, #0D2A1A 100%); position: relative; overflow: hidden; }
         .org-node::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--node-color); opacity: 0; transition: opacity 0.4s; }
@@ -215,24 +213,33 @@ export default function DiscoveryPresentation() {
         .doc-btn:hover { border-color: #00D67E44; color: #00D67E; background: #00D67E08; }
         .qw-card { border: 1px solid #1A3D2A; border-radius: 16px; padding: 28px; background: linear-gradient(135deg, #0A1F14 0%, #0D2A1A 100%); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
         .qw-card:hover { border-color: #00D67E44; transform: translateY(-4px); box-shadow: 0 12px 40px -8px #00D67E15; }
-        .line-v { position: absolute; width: 1px; background: linear-gradient(to bottom, #00D67E44, transparent); }
         .line-h { height: 1px; background: linear-gradient(to right, transparent, #1A3D2A, transparent); }
         @keyframes pulse-soft { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.8; } }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
         .pulse-dot { animation: pulse-soft 3s ease-in-out infinite; }
-        .float { animation: float 6s ease-in-out infinite; }
 
+        /* ── Responsive ── */
         @media (max-width: 1100px) {
           .areas-grid { grid-template-columns: repeat(3, 1fr) !important; }
           .frentes-grid { grid-template-columns: 1fr !important; }
         }
         @media (max-width: 900px) {
+          .container { padding: 0 16px !important; }
+          .nav { padding: 12px 16px !important; }
+          .nav-links { flex-wrap: wrap !important; justify-content: flex-end !important; gap: 6px !important; }
+          .nav-item { padding: 8px 14px !important; font-size: 12px !important; }
           .areas-grid { grid-template-columns: repeat(2, 1fr) !important; }
           .vision-grid { grid-template-columns: 1fr !important; }
           .qw-grid { grid-template-columns: 1fr !important; }
+          .panel-tabs { flex-wrap: wrap !important; }
+          .panel-header { padding: 20px 20px !important; }
+          .panel-body { padding: 20px 20px 28px !important; }
+          .cap-card-header { padding: 18px 18px !important; }
+          .cap-card-body { padding: 18px 18px !important; }
         }
         @media (max-width: 720px) {
           .areas-grid { grid-template-columns: 1fr !important; }
+          .home-buttons { flex-direction: column !important; }
+          .home-buttons button { width: 100% !important; }
         }
       `}</style>
 
@@ -241,18 +248,18 @@ export default function DiscoveryPresentation() {
       <div style={{ position: "fixed", top: "-40%", right: "-20%", width: "80%", height: "80%", background: "radial-gradient(ellipse, #00D67E08 0%, transparent 70%)", pointerEvents: "none", zIndex: 0 }} />
 
       {/* ── Navigation ── */}
-      <nav style={{
+      <nav className="nav" style={{
         position: "sticky", top: 0, zIndex: 50,
         display: "flex", alignItems: "center", justifyContent: "space-between",
         padding: "16px 40px",
         background: "linear-gradient(to bottom, #050F0Aee, #050F0A00)",
         backdropFilter: "blur(20px)"
       }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#00D67E" }} className="pulse-dot" />
-          <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 18, fontWeight: 600, color: "#00D67E", letterSpacing: 1 }}>TRIUNFO SEGUROS</span>
+        <div style={{ display: "flex", alignItems: "center", gap: 12, cursor: "pointer" }}
+          onClick={() => { setSection("home"); setActiveArea(null); }}>
+          <img src={logoSrc} alt="Triunfo Seguros" style={{ height: 28, opacity: 0.9 }} />
         </div>
-        <div style={{ display: "flex", gap: 4 }}>
+        <div className="nav-links" style={{ display: "flex", gap: 4 }}>
           {navItems.map(item => (
             <div key={item.id} className={`nav-item ${section === item.id ? "active" : ""}`}
               onClick={() => { setSection(item.id); setActiveArea(null); }}>
@@ -262,7 +269,7 @@ export default function DiscoveryPresentation() {
         </div>
       </nav>
 
-      <div style={{ position: "relative", zIndex: 1, maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
+      <div className="container" style={{ position: "relative", zIndex: 1, maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
 
         {/* ═══════════════ HOME ═══════════════ */}
         {section === "home" && (
@@ -278,7 +285,7 @@ export default function DiscoveryPresentation() {
             <FadeIn delay={0.3}>
               <h1 style={{
                 fontFamily: "'Cormorant Garamond', serif",
-                fontSize: "clamp(40px, 6vw, 72px)",
+                fontSize: "clamp(36px, 6vw, 72px)",
                 fontWeight: 600,
                 lineHeight: 1.1,
                 color: "#E8F0EC",
@@ -310,7 +317,7 @@ export default function DiscoveryPresentation() {
             </FadeIn>
 
             <FadeIn delay={0.9}>
-              <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+              <div className="home-buttons" style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
                 <button onClick={() => setSection("organigrama")} style={{
                   padding: "14px 32px", borderRadius: 12, border: "none",
                   background: "linear-gradient(135deg, #00D67E, #00A86B)", color: "#050F0A",
@@ -338,14 +345,14 @@ export default function DiscoveryPresentation() {
 
             {/* Stats ribbon */}
             <FadeIn delay={1.1}>
-              <div style={{ display: "flex", gap: 48, marginTop: 80, paddingTop: 40, borderTop: "1px solid #1A3D2A" }}>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 24, marginTop: 60, paddingTop: 32, borderTop: "1px solid #1A3D2A" }}>
                 {[
                   { n: "5", label: "Áreas escuchadas" },
                   { n: "163K", label: "Contactos/mes en AC" },
                   { n: "90%", label: "Siniestros por teléfono" },
                   { n: "48%", label: "Clientes ya digitales" }
                 ].map((s, i) => (
-                  <div key={i}>
+                  <div key={i} style={{ minWidth: 120 }}>
                     <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, fontWeight: 700, color: "#00D67E" }}>{s.n}</div>
                     <div style={{ fontSize: 12, color: "#5A8B6A", marginTop: 4 }}>{s.label}</div>
                   </div>
@@ -394,11 +401,10 @@ export default function DiscoveryPresentation() {
               </div>
             </FadeIn>
 
-            {/* Area nodes grid */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 16, marginTop: 8, maxWidth: 1100, margin: "8px auto 0" }}>
+            {/* Area nodes grid — className for responsive */}
+            <div className="areas-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 16, marginTop: 8, maxWidth: 1100, margin: "8px auto 0" }}>
               {AREAS.slice(1).map((a, i) => (
                 <FadeIn key={a.id} delay={0.4 + i * 0.1}>
-                  {/* Vertical connector */}
                   <div style={{ display: "flex", justifyContent: "center", height: 24 }}>
                     <div style={{ width: 1, height: "100%", background: "#1A3D2A" }} />
                   </div>
@@ -420,11 +426,9 @@ export default function DiscoveryPresentation() {
                 border: "1px solid " + area.color + "33",
                 borderRadius: 20,
                 background: "linear-gradient(135deg, #0A1F14 0%, #0D2A1A 100%)",
-                overflow: "hidden",
-                transition: "all 0.5s cubic-bezier(0.16, 1, 0.3, 1)"
+                overflow: "hidden"
               }}>
-                {/* Panel Header */}
-                <div style={{
+                <div className="panel-header" style={{
                   padding: "28px 36px", display: "flex", alignItems: "center", justifyContent: "space-between",
                   borderBottom: "1px solid #1A3D2A",
                   background: `linear-gradient(135deg, ${area.color}08, transparent)`
@@ -440,12 +444,11 @@ export default function DiscoveryPresentation() {
                   <div onClick={() => setActiveArea(null)} style={{
                     width: 36, height: 36, borderRadius: 10, border: "1px solid #1A3D2A",
                     display: "flex", alignItems: "center", justifyContent: "center",
-                    cursor: "pointer", color: "#5A8B6A", fontSize: 18, transition: "all 0.3s"
+                    cursor: "pointer", color: "#5A8B6A", fontSize: 18
                   }}>×</div>
                 </div>
 
-                {/* Tabs */}
-                <div style={{ padding: "20px 36px 0", display: "flex", gap: 8 }}>
+                <div className="panel-tabs" style={{ padding: "20px 36px 0", display: "flex", gap: 8, flexWrap: "wrap" }}>
                   {[
                     { id: "escuchamos", label: "Qué escuchamos" },
                     { id: "observamos", label: "Qué observamos" },
@@ -459,12 +462,11 @@ export default function DiscoveryPresentation() {
                   ))}
                 </div>
 
-                {/* Tab Content */}
-                <div style={{ padding: "28px 36px 36px" }}>
+                <div className="panel-body" style={{ padding: "28px 36px 36px" }}>
                   {activeTab === "escuchamos" && (
                     <div>
                       <p style={{ fontSize: 13, color: "#5A8B6A", marginBottom: 20 }}>
-                        Preguntas guía del Discovery (literal o adaptadas para claridad) — formuladas para entender, no para juzgar.
+                        Preguntas guía del Discovery — formuladas para entender, no para juzgar.
                       </p>
                       <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                         {area.questions.map((q, i) => (
@@ -590,7 +592,6 @@ export default function DiscoveryPresentation() {
               ))}
             </div>
 
-            {/* Frentes estratégicos */}
             <FadeIn delay={0.8}>
               <div style={{ marginTop: 64, padding: "40px 36px", borderRadius: 20, border: "1px solid #1A3D2A", background: "linear-gradient(135deg, #0A1F14, #0D2A1A)" }}>
                 <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, fontWeight: 600, marginBottom: 24 }}>
@@ -638,41 +639,31 @@ export default function DiscoveryPresentation() {
             <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
               {[
                 {
-                  icon: "◎",
-                  title: "CRM Corporativo · Vista 360°",
-                  color: "#3B82F6",
+                  icon: "◎", title: "CRM Corporativo · Vista 360°", color: "#3B82F6",
                   where: "Surgió en Estrategia & Marketing, Proyectos & Innovación, Operación & IT",
                   what: "Hoy no existe una vista unificada del cliente. Cada área ve un fragmento: pólizas, siniestros, pagos, contactos. Wise opera como sistema de ticketing, no como CRM. La consecuencia es que nadie tiene el panorama completo para tomar decisiones ni para personalizar la experiencia.",
                   enables: "Visión integral del cliente, campañas basadas en datos reales, reducción de reprocesos por falta de contexto."
                 },
                 {
-                  icon: "◈",
-                  title: "Experiencia Omnicanal",
-                  color: "#00D67E",
+                  icon: "◈", title: "Experiencia Omnicanal", color: "#00D67E",
                   where: "Surgió en Estrategia & Marketing, Comercial, Operación & IT",
                   what: "Los canales existen — web, app, teléfono, email, WhatsApp — pero no conversan entre sí. El cliente que cotiza en la web y llama para preguntar empieza de cero. El PAS no tiene continuidad entre lo que hace online y lo que gestiona por teléfono. No es falta de canales: es falta de integración.",
                   enables: "Continuidad real entre canales, reducción de fricción, experiencia comparable a plataformas digitales modernas."
                 },
                 {
-                  icon: "◇",
-                  title: "Motor de Notificaciones y Estados",
-                  color: "#F59E0B",
+                  icon: "◇", title: "Motor de Notificaciones y Estados", color: "#F59E0B",
                   where: "Surgió en Estrategia & Marketing, Operación & IT, Comercial",
                   what: "El cliente hoy no sabe en qué estado está su siniestro, su pago o su trámite, salvo que llame. Eso contribuye significativamente al volumen de contactos en Atención al Cliente (163.000/mes). No hay push notifications, no hay seguimiento visible, no hay proactividad informativa.",
                   enables: "Reducción significativa de contactos evitables, experiencia de transparencia, confianza del cliente y del PAS."
                 },
                 {
-                  icon: "✦",
-                  title: "Gobierno de Datos",
-                  color: "#EC4899",
+                  icon: "✦", title: "Gobierno de Datos", color: "#EC4899",
                   where: "Surgió en todas las áreas del Discovery",
                   what: "Datos dispersos entre sistemas que no comparten un modelo común. Métricas parciales que dependen de consolidación manual. Decisiones que se toman con información incompleta o desactualizada. No es un problema de volumen de datos: es de estructura y accesibilidad.",
                   enables: "KPIs compartidos, trazabilidad real, soporte confiable a decisiones de negocio, base para cualquier iniciativa de automatización."
                 },
                 {
-                  icon: "⚙",
-                  title: "Automatización Inteligente",
-                  color: "#8B5CF6",
+                  icon: "⚙", title: "Automatización Inteligente", color: "#8B5CF6",
                   where: "Surgió en Proyectos & Innovación, Técnica & Reaseguros, Operación & IT",
                   what: "Ya hay avances reales: 14 bots RPA operativos y Qlik funcionando. Pero escalan hasta donde el core lo permite. La IA no es un punto de partida: es una consecuencia natural de tener datos limpios, procesos trazables y canales integrados. Primero las bases, después la inteligencia.",
                   enables: "Escalar lo que ya funciona, automatizar siniestros simples, liberar tiempo técnico de gestión operativa para análisis estratégico."
@@ -680,15 +671,11 @@ export default function DiscoveryPresentation() {
               ].map((cap, i) => (
                 <FadeIn key={i} delay={0.15 + i * 0.12}>
                   <div style={{
-                    border: `1px solid ${cap.color}22`,
-                    borderRadius: 20,
-                    background: "linear-gradient(135deg, #0A1F14 0%, #0D2A1A 100%)",
-                    overflow: "hidden"
+                    border: `1px solid ${cap.color}22`, borderRadius: 20,
+                    background: "linear-gradient(135deg, #0A1F14 0%, #0D2A1A 100%)", overflow: "hidden"
                   }}>
-                    {/* Header */}
-                    <div style={{
-                      padding: "24px 32px",
-                      display: "flex", alignItems: "center", gap: 16,
+                    <div className="cap-card-header" style={{
+                      padding: "24px 32px", display: "flex", alignItems: "center", gap: 16,
                       borderBottom: `1px solid ${cap.color}15`,
                       background: `linear-gradient(135deg, ${cap.color}06, transparent)`
                     }}>
@@ -703,9 +690,7 @@ export default function DiscoveryPresentation() {
                         <div style={{ fontSize: 11, color: "#5A8B6A", marginTop: 3 }}>{cap.where}</div>
                       </div>
                     </div>
-
-                    {/* Body */}
-                    <div style={{ padding: "24px 32px" }}>
+                    <div className="cap-card-body" style={{ padding: "24px 32px" }}>
                       <div style={{ marginBottom: 20 }}>
                         <div style={{ fontSize: 11, color: cap.color, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 8, fontWeight: 600 }}>
                           Qué observamos
@@ -727,7 +712,6 @@ export default function DiscoveryPresentation() {
               ))}
             </div>
 
-            {/* Closing insight */}
             <FadeIn delay={1.0}>
               <div style={{
                 marginTop: 48, padding: "28px 36px", borderRadius: 16,
