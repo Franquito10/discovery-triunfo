@@ -1,3 +1,94 @@
+# Proyecto: Discovery Web (Actualizado)
+
+Este archivo contiene todo el código fuente del proyecto para que puedas copiarlo y pegarlo en ChatGPT.
+
+## FileStructure
+- package.json
+- vite.config.js
+- index.html
+- src/
+  - main.jsx
+  - App.jsx
+
+---
+
+## File: package.json
+```json
+{
+  "name": "discovery_web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.4",
+    "vite": "^7.3.1"
+  }
+}
+```
+
+## File: vite.config.js
+```javascript
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+export default defineConfig({
+    plugins: [react()],
+    server: {
+        host: "127.0.0.1",
+        port: 5174,
+        strictPort: true,
+    },
+});
+```
+
+## File: index.html
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discovery Web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>
+```
+
+## File: src/main.jsx
+```javascript
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>
+);
+```
+
+## File: src/App.jsx
+```javascript
 import { useState, useEffect, useRef } from "react";
 
 // ─── DATA ────────────────────────────────────────────────────────────
@@ -144,11 +235,29 @@ const QUICK_WINS = [
   { title: "Documentación de Conocimiento Crítico", desc: "Plan de transferencia para reducir dependencia de personas específicas.", time: "Continuo desde mes 1", icon: "📋" }
 ];
 
-
+// ─── STYLES ──────────────────────────────────────────────────────────
+const fonts = `
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap');
+`;
 
 // ─── COMPONENTS ──────────────────────────────────────────────────────
 
-
+function TypeWriter({ text, speed = 30, delay = 0, onDone }) {
+  const [displayed, setDisplayed] = useState("");
+  const [started, setStarted] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setStarted(true), delay);
+    return () => clearTimeout(t);
+  }, [delay]);
+  useEffect(() => {
+    if (!started) return;
+    if (displayed.length < text.length) {
+      const t = setTimeout(() => setDisplayed(text.slice(0, displayed.length + 1)), speed);
+      return () => clearTimeout(t);
+    } else if (onDone) onDone();
+  }, [displayed, started, text, speed, onDone]);
+  return <span>{displayed}<span style={{ opacity: displayed.length < text.length ? 1 : 0, transition: "opacity 0.3s" }}>|</span></span>;
+}
 
 function FadeIn({ children, delay = 0, direction = "up", className = "" }) {
   const [visible, setVisible] = useState(false);
@@ -176,6 +285,12 @@ export default function DiscoveryPresentation() {
   const [activeArea, setActiveArea] = useState(null);
   const [activeTab, setActiveTab] = useState("escuchamos");
   const [section, setSection] = useState("home");
+  const [entered, setEntered] = useState(false);
+  const [hoveredNode, setHoveredNode] = useState(null);
+
+  useEffect(() => {
+    setTimeout(() => setEntered(true), 300);
+  }, []);
 
   const area = AREAS.find(a => a.id === activeArea);
 
@@ -196,7 +311,7 @@ export default function DiscoveryPresentation() {
       position: "relative",
       overflow: "hidden"
     }}>
-      <style>{`
+      <style>{fonts}{`
         * { box-sizing: border-box; margin: 0; padding: 0; }
         ::selection { background: #00D67E33; color: #00D67E; }
         .nav-item { cursor: pointer; padding: 10px 20px; border-radius: 100px; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; transition: all 0.3s; border: 1px solid transparent; }
@@ -235,7 +350,7 @@ export default function DiscoveryPresentation() {
           .areas-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
-
+      
       {/* ── Background Texture ── */}
       <div style={{ position: "fixed", inset: 0, opacity: 0.03, backgroundImage: "radial-gradient(#00D67E 1px, transparent 1px)", backgroundSize: "40px 40px", pointerEvents: "none", zIndex: 0 }} />
       <div style={{ position: "fixed", top: "-40%", right: "-20%", width: "80%", height: "80%", background: "radial-gradient(ellipse, #00D67E08 0%, transparent 70%)", pointerEvents: "none", zIndex: 0 }} />
@@ -295,16 +410,16 @@ export default function DiscoveryPresentation() {
               <p style={{
                 fontSize: 18, lineHeight: 1.7, color: "#7A9B8A", maxWidth: 580, marginBottom: 48
               }}>
-                Este Discovery no evalúa personas ni decisiones pasadas.
-                Hace visible cómo opera hoy el sistema y qué capacidades
+                Este Discovery no evalúa personas ni decisiones pasadas. 
+                Hace visible cómo opera hoy el sistema y qué capacidades 
                 necesita para el futuro.
               </p>
             </FadeIn>
 
             <FadeIn delay={0.7}>
               <p style={{ fontSize: 14, color: "#4A7B5A", lineHeight: 1.8, maxWidth: 540, marginBottom: 48 }}>
-                Recoge miradas de distintas áreas y momentos de la organización,
-                incluyendo referentes que hoy ya no están en funciones activas —
+                Recoge miradas de distintas áreas y momentos de la organización, 
+                incluyendo referentes que hoy ya no están en funciones activas — 
                 para asegurar una visión amplia, honesta y no circunstancial.
               </p>
             </FadeIn>
@@ -567,7 +682,7 @@ export default function DiscoveryPresentation() {
                   Quick Wins · 0-9 meses
                 </h2>
                 <p style={{ color: "#5A8B6A", fontSize: 15, maxWidth: 540 }}>
-                  Acciones concretas, inversión acotada, resultados visibles en semanas.
+                  Acciones concretas, inversión acotada, resultados visibles en semanas. 
                   Cada una resuelve un dolor que apareció en múltiples áreas del Discovery.
                 </p>
               </div>
@@ -812,3 +927,4 @@ export default function DiscoveryPresentation() {
     </div>
   );
 }
+```
