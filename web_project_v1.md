@@ -236,28 +236,11 @@ const QUICK_WINS = [
 ];
 
 // ─── STYLES ──────────────────────────────────────────────────────────
-const fonts = `
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap');
-`;
+
 
 // ─── COMPONENTS ──────────────────────────────────────────────────────
 
-function TypeWriter({ text, speed = 30, delay = 0, onDone }) {
-  const [displayed, setDisplayed] = useState("");
-  const [started, setStarted] = useState(false);
-  useEffect(() => {
-    const t = setTimeout(() => setStarted(true), delay);
-    return () => clearTimeout(t);
-  }, [delay]);
-  useEffect(() => {
-    if (!started) return;
-    if (displayed.length < text.length) {
-      const t = setTimeout(() => setDisplayed(text.slice(0, displayed.length + 1)), speed);
-      return () => clearTimeout(t);
-    } else if (onDone) onDone();
-  }, [displayed, started, text, speed, onDone]);
-  return <span>{displayed}<span style={{ opacity: displayed.length < text.length ? 1 : 0, transition: "opacity 0.3s" }}>|</span></span>;
-}
+
 
 function FadeIn({ children, delay = 0, direction = "up", className = "" }) {
   const [visible, setVisible] = useState(false);
@@ -285,12 +268,6 @@ export default function DiscoveryPresentation() {
   const [activeArea, setActiveArea] = useState(null);
   const [activeTab, setActiveTab] = useState("escuchamos");
   const [section, setSection] = useState("home");
-  const [entered, setEntered] = useState(false);
-  const [hoveredNode, setHoveredNode] = useState(null);
-
-  useEffect(() => {
-    setTimeout(() => setEntered(true), 300);
-  }, []);
 
   const area = AREAS.find(a => a.id === activeArea);
 
@@ -311,7 +288,7 @@ export default function DiscoveryPresentation() {
       position: "relative",
       overflow: "hidden"
     }}>
-      <style>{fonts}{`
+      <style>{`
         * { box-sizing: border-box; margin: 0; padding: 0; }
         ::selection { background: #00D67E33; color: #00D67E; }
         .nav-item { cursor: pointer; padding: 10px 20px; border-radius: 100px; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; transition: all 0.3s; border: 1px solid transparent; }
