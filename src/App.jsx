@@ -174,6 +174,12 @@ export default function DiscoveryPresentation() {
   const [activeArea, setActiveArea] = useState(null);
   const [activeTab, setActiveTab] = useState("escuchamos");
   const [section, setSection] = useState("home");
+  // ✅ AGREGAR ESTO
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [section]);
 
   const area = AREAS.find(a => a.id === activeArea);
 
@@ -196,6 +202,7 @@ export default function DiscoveryPresentation() {
     }}>
       <style>{`
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; }
         ::selection { background: #00D67E33; color: #00D67E; }
         .nav-item { cursor: pointer; padding: 10px 20px; border-radius: 100px; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; transition: all 0.3s; border: 1px solid transparent; color: #7A9B8A; }
         .nav-item:hover { border-color: #00D67E44; color: #B0D4C0; }
@@ -216,6 +223,49 @@ export default function DiscoveryPresentation() {
         .line-h { height: 1px; background: linear-gradient(to right, transparent, #1A3D2A, transparent); }
         @keyframes pulse-soft { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.8; } }
         .pulse-dot { animation: pulse-soft 3s ease-in-out infinite; }
+        /* ── Navbar Mobile (hamburger) ── */
+        .nav-burger { display: none; }
+        .nav-overlay { display: none; }
+
+        @media (max-width: 900px) {
+          .nav-burger { display: inline-flex; align-items: center; justify-content: center; }
+
+          /* en mobile NO wrap: se oculta el nav normal */
+          .nav-links { display: none !important; }
+
+          /* dropdown */
+          .nav-links.open{
+            display: flex !important;
+            position: absolute;
+            right: 16px;
+            top: 58px;
+            flex-direction: column;
+            gap: 8px;
+            padding: 10px;
+            border-radius: 14px;
+            border: 1px solid #1A3D2A;
+            background: rgba(5, 15, 10, 0.92);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 18px 60px -20px rgba(0,0,0,0.6);
+            min-width: 220px;
+          }
+
+          .nav-links.open .nav-item{
+            width: 100%;
+            text-align: left;
+            padding: 10px 12px !important;
+            border-radius: 12px;
+          }
+
+          .nav-overlay{
+            display: block;
+            position: fixed;
+            inset: 0;
+            background: transparent;
+            z-index: -1; /* queda “detrás” del menú pero tapa el resto para poder cerrar */
+          }
+        }
+
 
         /* ── Responsive ── */
         @media (max-width: 1100px) {
@@ -255,19 +305,49 @@ export default function DiscoveryPresentation() {
         background: "linear-gradient(to bottom, #050F0Aee, #050F0A00)",
         backdropFilter: "blur(20px)"
       }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 12, cursor: "pointer" }}
-          onClick={() => { setSection("home"); setActiveArea(null); }}>
+        <div
+          style={{ display: "flex", alignItems: "center", gap: 12, cursor: "pointer" }}
+          onClick={() => { setSection("home"); setActiveArea(null); }}
+        >
           <img src={logoSrc} alt="Triunfo Seguros" style={{ height: 28, opacity: 0.9 }} />
         </div>
-        <div className="nav-links" style={{ display: "flex", gap: 4 }}>
+
+        {/* ✅ Botón hamburger (solo mobile) */}
+        <button
+          className="nav-burger"
+          onClick={() => setMenuOpen(v => !v)}
+          aria-label="Abrir menú"
+          style={{
+            background: "transparent",
+            border: "1px solid #1A3D2A",
+            borderRadius: 12,
+            padding: "10px 12px",
+            cursor: "pointer",
+            color: "#B0D4C0"
+          }}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        </button>
+
+        {/* ✅ Links desktop + dropdown mobile */}
+        <div className={`nav-links ${menuOpen ? "open" : ""}`} style={{ display: "flex", gap: 4 }}>
           {navItems.map(item => (
-            <div key={item.id} className={`nav-item ${section === item.id ? "active" : ""}`}
-              onClick={() => { setSection(item.id); setActiveArea(null); }}>
+            <div
+              key={item.id}
+              className={`nav-item ${section === item.id ? "active" : ""}`}
+              onClick={() => { setSection(item.id); setActiveArea(null); }}
+            >
               {item.label}
             </div>
           ))}
         </div>
+
+        {/* ✅ Overlay para cerrar (solo cuando está abierto) */}
+        {menuOpen && <div className="nav-overlay" onClick={() => setMenuOpen(false)} />}
       </nav>
+
 
       <div className="container" style={{ position: "relative", zIndex: 1, maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
 
