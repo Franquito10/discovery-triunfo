@@ -433,7 +433,7 @@ export default function DiscoveryPresentation() {
                   { n: "48%", label: "Clientes ya digitales" }
                 ].map((s, i) => (
                   <div key={i} style={{ minWidth: 120 }}>
-                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, fontWeight: 700, color: "#00D67E" }}>{s.n}</div>
+                    <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 36, fontWeight: 700, color: "#00D67E" }}>{s.n}</div>
                     <div style={{ fontSize: 12, color: "#5A8B6A", marginTop: 4 }}>{s.label}</div>
                   </div>
                 ))}
