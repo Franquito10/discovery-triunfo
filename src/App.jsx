@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-const logoSrc = "/logo-blanco.webp";
+const logoSrc = "/logo-triunfo.svg";
 
 
 // ─── DATA ────────────────────────────────────────────────────────────
@@ -194,8 +194,8 @@ export default function DiscoveryPresentation() {
   return (
     <div style={{
       fontFamily: "'DM Sans', sans-serif",
-      background: "#050F0A",
-      color: "#E8F0EC",
+      background: "#FFFFFF",
+      color: "#1A2E23",
       minHeight: "100vh",
       position: "relative",
       overflow: "hidden"
@@ -204,23 +204,23 @@ export default function DiscoveryPresentation() {
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html, body { font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; }
         ::selection { background: #00D67E33; color: #00D67E; }
-        .nav-item { cursor: pointer; padding: 10px 20px; border-radius: 100px; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; transition: all 0.3s; border: 1px solid transparent; color: #7A9B8A; }
-        .nav-item:hover { border-color: #00D67E44; color: #B0D4C0; }
+        .nav-item { cursor: pointer; padding: 10px 20px; border-radius: 100px; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; transition: all 0.3s; border: 1px solid transparent; color: #5A7566; }
+        .nav-item:hover { border-color: #00D67E44; color: #1A2E23; }
         .nav-item.active { background: #00D67E18; border-color: #00D67E44; color: #00D67E; }
-        .org-node { cursor: pointer; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); border: 1px solid #1A3D2A; border-radius: 16px; padding: 24px; background: linear-gradient(135deg, #0A1F14 0%, #0D2A1A 100%); position: relative; overflow: hidden; }
+        .org-node { cursor: pointer; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); border: 1px solid #E0E8E4; border-radius: 16px; padding: 24px; background: #FFFFFF; position: relative; overflow: hidden; }
         .org-node::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--node-color); opacity: 0; transition: opacity 0.4s; }
         .org-node:hover { border-color: var(--node-color); transform: translateY(-4px); box-shadow: 0 12px 40px -8px var(--node-shadow); }
         .org-node:hover::before { opacity: 1; }
-        .org-node.selected { border-color: var(--node-color); background: linear-gradient(135deg, #0A1F14 0%, #0F2E1E 100%); box-shadow: 0 12px 40px -8px var(--node-shadow); }
+        .org-node.selected { border-color: var(--node-color); background: #F0FDF4; box-shadow: 0 12px 40px -8px var(--node-shadow); }
         .org-node.selected::before { opacity: 1; }
-        .tab-btn { cursor: pointer; padding: 10px 18px; border-radius: 10px; font-size: 13px; font-weight: 500; transition: all 0.3s; border: 1px solid #1A3D2A; background: transparent; color: #7A9B8A; }
-        .tab-btn:hover { border-color: #00D67E44; color: #B0D4C0; }
+        .tab-btn { cursor: pointer; padding: 10px 18px; border-radius: 10px; font-size: 13px; font-weight: 500; transition: all 0.3s; border: 1px solid #E0E8E4; background: transparent; color: #5A7566; }
+        .tab-btn:hover { border-color: #00D67E44; color: #1A2E23; }
         .tab-btn.active { background: #00D67E18; border-color: #00D67E44; color: #00D67E; }
-        .doc-btn { cursor: pointer; padding: 12px 18px; border-radius: 10px; font-size: 13px; font-weight: 500; transition: all 0.3s; border: 1px solid #1A3D2A; background: #0A1F14; color: #7A9B8A; display: flex; align-items: center; gap: 10px; }
+        .doc-btn { cursor: pointer; padding: 12px 18px; border-radius: 10px; font-size: 13px; font-weight: 500; transition: all 0.3s; border: 1px solid #E0E8E4; background: #F8FAF9; color: #5A7566; display: flex; align-items: center; gap: 10px; }
         .doc-btn:hover { border-color: #00D67E44; color: #00D67E; background: #00D67E08; }
-        .qw-card { border: 1px solid #1A3D2A; border-radius: 16px; padding: 28px; background: linear-gradient(135deg, #0A1F14 0%, #0D2A1A 100%); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .qw-card { border: 1px solid #E0E8E4; border-radius: 16px; padding: 28px; background: #FFFFFF; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
         .qw-card:hover { border-color: #00D67E44; transform: translateY(-4px); box-shadow: 0 12px 40px -8px #00D67E15; }
-        .line-h { height: 1px; background: linear-gradient(to right, transparent, #1A3D2A, transparent); }
+        .line-h { height: 1px; background: linear-gradient(to right, transparent, #E0E8E4, transparent); }
         @keyframes pulse-soft { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.8; } }
         .pulse-dot { animation: pulse-soft 3s ease-in-out infinite; }
         /* ── Navbar Mobile (hamburger) ── */
@@ -243,10 +243,10 @@ export default function DiscoveryPresentation() {
             gap: 8px;
             padding: 10px;
             border-radius: 14px;
-            border: 1px solid #1A3D2A;
-            background: rgba(5, 15, 10, 0.92);
+            border: 1px solid #E0E8E4;
+            background: rgba(255, 255, 255, 0.96);
             backdrop-filter: blur(18px);
-            box-shadow: 0 18px 60px -20px rgba(0,0,0,0.6);
+            box-shadow: 0 18px 60px -20px rgba(0,0,0,0.12);
             min-width: 220px;
           }
 
@@ -294,15 +294,15 @@ export default function DiscoveryPresentation() {
       `}</style>
 
       {/* ── Background Texture ── */}
-      <div style={{ position: "fixed", inset: 0, opacity: 0.03, backgroundImage: "radial-gradient(#00D67E 1px, transparent 1px)", backgroundSize: "40px 40px", pointerEvents: "none", zIndex: 0 }} />
-      <div style={{ position: "fixed", top: "-40%", right: "-20%", width: "80%", height: "80%", background: "radial-gradient(ellipse, #00D67E08 0%, transparent 70%)", pointerEvents: "none", zIndex: 0 }} />
+      <div style={{ position: "fixed", inset: 0, opacity: 0.02, backgroundImage: "radial-gradient(#00A86B 1px, transparent 1px)", backgroundSize: "40px 40px", pointerEvents: "none", zIndex: 0 }} />
+      <div style={{ position: "fixed", top: "-40%", right: "-20%", width: "80%", height: "80%", background: "radial-gradient(ellipse, #00D67E06 0%, transparent 70%)", pointerEvents: "none", zIndex: 0 }} />
 
       {/* ── Navigation ── */}
       <nav className="nav" style={{
         position: "sticky", top: 0, zIndex: 50,
         display: "flex", alignItems: "center", justifyContent: "space-between",
         padding: "16px 40px",
-        background: "linear-gradient(to bottom, #050F0Aee, #050F0A00)",
+        background: "linear-gradient(to bottom, #FFFFFFee, #FFFFFF00)",
         backdropFilter: "blur(20px)"
       }}>
         <div
@@ -319,11 +319,11 @@ export default function DiscoveryPresentation() {
           aria-label="Abrir menú"
           style={{
             background: "transparent",
-            border: "1px solid #1A3D2A",
+            border: "1px solid #E0E8E4",
             borderRadius: 12,
             padding: "10px 12px",
             cursor: "pointer",
-            color: "#B0D4C0"
+            color: "#1A2E23"
           }}
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
@@ -356,7 +356,7 @@ export default function DiscoveryPresentation() {
           <div style={{ minHeight: "85vh", display: "flex", flexDirection: "column", justifyContent: "center" }}>
             <FadeIn delay={0.1}>
               <div style={{ marginBottom: 32 }}>
-                <div style={{ display: "inline-block", padding: "6px 16px", borderRadius: 100, border: "1px solid #1A3D2A", fontSize: 12, letterSpacing: 2, textTransform: "uppercase", color: "#5A8B6A", marginBottom: 40 }}>
+                <div style={{ display: "inline-block", padding: "6px 16px", borderRadius: 100, border: "1px solid #E0E8E4", fontSize: 12, letterSpacing: 2, textTransform: "uppercase", color: "#5A7566", marginBottom: 40 }}>
                   Discovery Estratégico · 2025
                 </div>
               </div>
@@ -368,7 +368,7 @@ export default function DiscoveryPresentation() {
                 fontSize: "clamp(36px, 6vw, 72px)",
                 fontWeight: 600,
                 lineHeight: 1.1,
-                color: "#E8F0EC",
+                color: "#1A2E23",
                 maxWidth: 800,
                 marginBottom: 32
               }}>
@@ -380,7 +380,7 @@ export default function DiscoveryPresentation() {
 
             <FadeIn delay={0.5}>
               <p style={{
-                fontSize: 18, lineHeight: 1.7, color: "#7A9B8A", maxWidth: 580, marginBottom: 48
+                fontSize: 18, lineHeight: 1.7, color: "#5A7566", maxWidth: 580, marginBottom: 48
               }}>
                 Este Discovery no evalúa personas ni decisiones pasadas.
                 Hace visible cómo opera hoy el sistema y qué capacidades
@@ -389,7 +389,7 @@ export default function DiscoveryPresentation() {
             </FadeIn>
 
             <FadeIn delay={0.7}>
-              <p style={{ fontSize: 14, color: "#4A7B5A", lineHeight: 1.8, maxWidth: 540, marginBottom: 48 }}>
+              <p style={{ fontSize: 14, color: "#5A7566", lineHeight: 1.8, maxWidth: 540, marginBottom: 48 }}>
                 Recoge miradas de distintas áreas y momentos de la organización,
                 incluyendo referentes que hoy ya no están en funciones activas —
                 para asegurar una visión amplia, honesta y no circunstancial.
@@ -408,7 +408,7 @@ export default function DiscoveryPresentation() {
                 </button>
                 <button onClick={() => setSection("quickwins")} style={{
                   padding: "14px 32px", borderRadius: 12,
-                  border: "1px solid #1A3D2A", background: "transparent", color: "#7A9B8A",
+                  border: "1px solid #E0E8E4", background: "transparent", color: "#5A7566",
                   fontSize: 14, fontWeight: 500, cursor: "pointer", transition: "all 0.3s"
                 }}>
                   Ver Quick Wins
@@ -425,7 +425,7 @@ export default function DiscoveryPresentation() {
 
             {/* Stats ribbon */}
             <FadeIn delay={1.1}>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 24, marginTop: 60, paddingTop: 32, borderTop: "1px solid #1A3D2A" }}>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 24, marginTop: 60, paddingTop: 32, borderTop: "1px solid #E0E8E4" }}>
                 {[
                   { n: "5", label: "Áreas escuchadas" },
                   { n: "163K", label: "Contactos/mes en AC" },
@@ -434,7 +434,7 @@ export default function DiscoveryPresentation() {
                 ].map((s, i) => (
                   <div key={i} style={{ minWidth: 120 }}>
                     <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 36, fontWeight: 700, color: "#00D67E" }}>{s.n}</div>
-                    <div style={{ fontSize: 12, color: "#5A8B6A", marginTop: 4 }}>{s.label}</div>
+                    <div style={{ fontSize: 12, color: "#5A7566", marginTop: 4 }}>{s.label}</div>
                   </div>
                 ))}
               </div>
@@ -461,8 +461,8 @@ export default function DiscoveryPresentation() {
                   style={{ "--node-color": AREAS[0].color, "--node-shadow": AREAS[0].color + "25", maxWidth: 360, textAlign: "center" }}
                   onClick={() => { setActiveArea(activeArea === "direccion" ? null : "direccion"); setActiveTab("escuchamos"); }}>
                   <div style={{ fontSize: 28, marginBottom: 8 }}>{AREAS[0].icon}</div>
-                  <div style={{ fontSize: 16, fontWeight: 600, color: "#E8F0EC" }}>{AREAS[0].name}</div>
-                  <div style={{ fontSize: 11, color: "#5A8B6A", marginTop: 6 }}>Visión estratégica del Discovery</div>
+                  <div style={{ fontSize: 16, fontWeight: 600, color: "#1A2E23" }}>{AREAS[0].name}</div>
+                  <div style={{ fontSize: 11, color: "#5A7566", marginTop: 6 }}>Visión estratégica del Discovery</div>
                 </div>
               </div>
             </FadeIn>
@@ -470,7 +470,7 @@ export default function DiscoveryPresentation() {
             {/* Connector line */}
             <FadeIn delay={0.3}>
               <div style={{ display: "flex", justifyContent: "center", height: 40 }}>
-                <div style={{ width: 1, height: "100%", background: "linear-gradient(to bottom, #00D67E44, #1A3D2A)" }} />
+                <div style={{ width: 1, height: "100%", background: "linear-gradient(to bottom, #00D67E44, #E0E8E4)" }} />
               </div>
             </FadeIn>
 
@@ -486,14 +486,14 @@ export default function DiscoveryPresentation() {
               {AREAS.slice(1).map((a, i) => (
                 <FadeIn key={a.id} delay={0.4 + i * 0.1}>
                   <div style={{ display: "flex", justifyContent: "center", height: 24 }}>
-                    <div style={{ width: 1, height: "100%", background: "#1A3D2A" }} />
+                    <div style={{ width: 1, height: "100%", background: "#E0E8E4" }} />
                   </div>
                   <div className={`org-node ${activeArea === a.id ? "selected" : ""}`}
                     style={{ "--node-color": a.color, "--node-shadow": a.color + "25", textAlign: "center" }}
                     onClick={() => { setActiveArea(activeArea === a.id ? null : a.id); setActiveTab("escuchamos"); }}>
                     <div style={{ fontSize: 24, marginBottom: 8, color: a.color }}>{a.icon}</div>
-                    <div style={{ fontSize: 14, fontWeight: 600, color: "#E8F0EC", lineHeight: 1.3 }}>{a.name}</div>
-                    <div style={{ fontSize: 10, color: "#5A8B6A", marginTop: 6, lineHeight: 1.3 }}>Aportes recogidos durante el Discovery</div>
+                    <div style={{ fontSize: 14, fontWeight: 600, color: "#1A2E23", lineHeight: 1.3 }}>{a.name}</div>
+                    <div style={{ fontSize: 10, color: "#5A7566", marginTop: 6, lineHeight: 1.3 }}>Aportes recogidos durante el Discovery</div>
                   </div>
                 </FadeIn>
               ))}
@@ -505,12 +505,12 @@ export default function DiscoveryPresentation() {
                 marginTop: 48,
                 border: "1px solid " + area.color + "33",
                 borderRadius: 20,
-                background: "linear-gradient(135deg, #0A1F14 0%, #0D2A1A 100%)",
+                background: "#FFFFFF",
                 overflow: "hidden"
               }}>
                 <div className="panel-header" style={{
                   padding: "28px 36px", display: "flex", alignItems: "center", justifyContent: "space-between",
-                  borderBottom: "1px solid #1A3D2A",
+                  borderBottom: "1px solid #E0E8E4",
                   background: `linear-gradient(135deg, ${area.color}08, transparent)`
                 }}>
                   <div>
@@ -522,9 +522,9 @@ export default function DiscoveryPresentation() {
                     </div>
                   </div>
                   <div onClick={() => setActiveArea(null)} style={{
-                    width: 36, height: 36, borderRadius: 10, border: "1px solid #1A3D2A",
+                    width: 36, height: 36, borderRadius: 10, border: "1px solid #E0E8E4",
                     display: "flex", alignItems: "center", justifyContent: "center",
-                    cursor: "pointer", color: "#5A8B6A", fontSize: 18
+                    cursor: "pointer", color: "#5A7566", fontSize: 18
                   }}>×</div>
                 </div>
 
@@ -545,14 +545,14 @@ export default function DiscoveryPresentation() {
                 <div className="panel-body" style={{ padding: "28px 36px 36px" }}>
                   {activeTab === "escuchamos" && (
                     <div>
-                      <p style={{ fontSize: 13, color: "#5A8B6A", marginBottom: 20 }}>
+                      <p style={{ fontSize: 13, color: "#5A7566", marginBottom: 20 }}>
                         Preguntas guía del Discovery — formuladas para entender, no para juzgar.
                       </p>
                       <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                         {area.questions.map((q, i) => (
                           <div key={i} style={{
-                            padding: "20px 24px", borderRadius: 12, border: "1px solid #1A3D2A",
-                            background: "#050F0A", position: "relative", paddingLeft: 40
+                            padding: "20px 24px", borderRadius: 12, border: "1px solid #E0E8E4",
+                            background: "#F8FAF9", position: "relative", paddingLeft: 40
                           }}>
                             <div style={{
                               position: "absolute", left: 16, top: 22, width: 12, height: 12,
@@ -560,7 +560,7 @@ export default function DiscoveryPresentation() {
                             }} />
                             <span style={{
                               fontFamily: "'Cormorant Garamond', serif", fontSize: 17,
-                              fontStyle: "italic", color: "#B0D4C0", lineHeight: 1.5
+                              fontStyle: "italic", color: "#1A2E23", lineHeight: 1.5
                             }}>
                               "{q}"
                             </span>
@@ -572,14 +572,14 @@ export default function DiscoveryPresentation() {
 
                   {activeTab === "observamos" && (
                     <div>
-                      <p style={{ fontSize: 13, color: "#5A8B6A", marginBottom: 20 }}>
+                      <p style={{ fontSize: 13, color: "#5A7566", marginBottom: 20 }}>
                         Patrones y hallazgos que emergen del Discovery — sin juicio, con contexto.
                       </p>
                       <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                         {area.findings.map((f, i) => (
                           <div key={i} style={{
-                            padding: "20px 24px", borderRadius: 12, border: "1px solid #1A3D2A",
-                            background: "#050F0A", display: "flex", gap: 16, alignItems: "flex-start"
+                            padding: "20px 24px", borderRadius: 12, border: "1px solid #E0E8E4",
+                            background: "#F8FAF9", display: "flex", gap: 16, alignItems: "flex-start"
                           }}>
                             <div style={{
                               minWidth: 28, height: 28, borderRadius: 8,
@@ -587,7 +587,7 @@ export default function DiscoveryPresentation() {
                               display: "flex", alignItems: "center", justifyContent: "center",
                               fontSize: 13, fontWeight: 700, marginTop: 2
                             }}>{i + 1}</div>
-                            <p style={{ fontSize: 15, lineHeight: 1.6, color: "#B0D4C0" }}>{f}</p>
+                            <p style={{ fontSize: 15, lineHeight: 1.6, color: "#1A2E23" }}>{f}</p>
                           </div>
                         ))}
                       </div>
@@ -596,7 +596,7 @@ export default function DiscoveryPresentation() {
 
                   {activeTab === "oportunidades" && (
                     <div>
-                      <p style={{ fontSize: 13, color: "#5A8B6A", marginBottom: 20 }}>
+                      <p style={{ fontSize: 13, color: "#5A7566", marginBottom: 20 }}>
                         Capacidades que se vuelven necesarias — evolución, no revolución.
                       </p>
                       <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
@@ -608,7 +608,7 @@ export default function DiscoveryPresentation() {
                             display: "flex", gap: 14, alignItems: "center"
                           }}>
                             <div style={{ color: area.color, fontSize: 16 }}>→</div>
-                            <p style={{ fontSize: 15, color: "#E8F0EC", lineHeight: 1.5 }}>{o}</p>
+                            <p style={{ fontSize: 15, color: "#1A2E23", lineHeight: 1.5 }}>{o}</p>
                           </div>
                         ))}
                       </div>
@@ -617,7 +617,7 @@ export default function DiscoveryPresentation() {
 
                   {activeTab === "docs" && (
                     <div>
-                      <p style={{ fontSize: 13, color: "#5A8B6A", marginBottom: 20 }}>
+                      <p style={{ fontSize: 13, color: "#5A7566", marginBottom: 20 }}>
                         Documentación de respaldo — profundidad disponible, sin obligación de lectura.
                       </p>
                       <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -648,7 +648,7 @@ export default function DiscoveryPresentation() {
                 <h2 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 40, fontWeight: 600, letterSpacing: "-0.3px", marginBottom: 12 }}>
                   Quick Wins · 0-9 meses
                 </h2>
-                <p style={{ color: "#5A8B6A", fontSize: 15, maxWidth: 540 }}>
+                <p style={{ color: "#5A7566", fontSize: 15, maxWidth: 540 }}>
                   Acciones concretas, inversión acotada, resultados visibles en semanas.
                   Cada una resuelve un dolor que apareció en múltiples áreas del Discovery.
                 </p>
@@ -660,8 +660,8 @@ export default function DiscoveryPresentation() {
                 <FadeIn key={i} delay={0.2 + i * 0.15}>
                   <div className="qw-card">
                     <div style={{ fontSize: 32, marginBottom: 16 }}>{qw.icon}</div>
-                    <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 10, color: "#E8F0EC" }}>{qw.title}</h3>
-                    <p style={{ fontSize: 14, lineHeight: 1.6, color: "#7A9B8A", marginBottom: 16 }}>{qw.desc}</p>
+                    <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 10, color: "#1A2E23" }}>{qw.title}</h3>
+                    <p style={{ fontSize: 14, lineHeight: 1.6, color: "#5A7566", marginBottom: 16 }}>{qw.desc}</p>
                     <div style={{
                       display: "inline-block", padding: "6px 14px", borderRadius: 8,
                       background: "#00D67E12", border: "1px solid #00D67E22",
@@ -673,7 +673,7 @@ export default function DiscoveryPresentation() {
             </div>
 
             <FadeIn delay={0.8}>
-              <div style={{ marginTop: 64, padding: "40px 36px", borderRadius: 20, border: "1px solid #1A3D2A", background: "linear-gradient(135deg, #0A1F14, #0D2A1A)" }}>
+              <div style={{ marginTop: 64, padding: "40px 36px", borderRadius: 20, border: "1px solid #E0E8E4", background: "#FFFFFF" }}>
                 <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, fontWeight: 600, marginBottom: 24 }}>
                   Tres frentes de evolución · 6-36 meses
                 </h3>
@@ -685,8 +685,8 @@ export default function DiscoveryPresentation() {
                   ].map((f, i) => (
                     <div key={i} style={{ padding: 24, borderRadius: 14, border: `1px solid ${f.color}22`, background: `${f.color}08` }}>
                       <div style={{ fontSize: 11, color: f.color, letterSpacing: 2, textTransform: "uppercase", marginBottom: 8 }}>Frente {i + 1}</div>
-                      <div style={{ fontSize: 16, fontWeight: 600, color: "#E8F0EC", marginBottom: 12 }}>{f.title}</div>
-                      <div style={{ fontSize: 13, color: "#7A9B8A", marginBottom: 8 }}>{f.pct} del presupuesto</div>
+                      <div style={{ fontSize: 16, fontWeight: 600, color: "#1A2E23", marginBottom: 12 }}>{f.title}</div>
+                      <div style={{ fontSize: 13, color: "#5A7566", marginBottom: 8 }}>{f.pct} del presupuesto</div>
                       <div style={{ fontSize: 13, color: f.color, fontWeight: 500 }}>{f.impact}</div>
                     </div>
                   ))}
@@ -708,7 +708,7 @@ export default function DiscoveryPresentation() {
                   Capacidades que el Discovery
                   <br />hizo <span style={{ color: "#00D67E" }}>visibles</span>
                 </h2>
-                <p style={{ color: "#5A8B6A", fontSize: 15, maxWidth: 620, lineHeight: 1.7 }}>
+                <p style={{ color: "#5A7566", fontSize: 15, maxWidth: 620, lineHeight: 1.7 }}>
                   Más allá de los dolores específicos por área, el Discovery hizo visibles un conjunto
                   de capacidades transversales que hoy no están plenamente habilitadas y que condicionan
                   la experiencia del cliente, la eficiencia operativa y la capacidad de escalar.
@@ -752,7 +752,7 @@ export default function DiscoveryPresentation() {
                 <FadeIn key={i} delay={0.15 + i * 0.12}>
                   <div style={{
                     border: `1px solid ${cap.color}22`, borderRadius: 20,
-                    background: "linear-gradient(135deg, #0A1F14 0%, #0D2A1A 100%)", overflow: "hidden"
+                    background: "#FFFFFF", overflow: "hidden"
                   }}>
                     <div className="cap-card-header" style={{
                       padding: "24px 32px", display: "flex", alignItems: "center", gap: 16,
@@ -766,8 +766,8 @@ export default function DiscoveryPresentation() {
                         fontSize: 20, flexShrink: 0
                       }}>{cap.icon}</div>
                       <div>
-                        <div style={{ fontSize: 17, fontWeight: 600, color: "#E8F0EC" }}>{cap.title}</div>
-                        <div style={{ fontSize: 11, color: "#5A8B6A", marginTop: 3 }}>{cap.where}</div>
+                        <div style={{ fontSize: 17, fontWeight: 600, color: "#1A2E23" }}>{cap.title}</div>
+                        <div style={{ fontSize: 11, color: "#5A7566", marginTop: 3 }}>{cap.where}</div>
                       </div>
                     </div>
                     <div className="cap-card-body" style={{ padding: "24px 32px" }}>
@@ -775,7 +775,7 @@ export default function DiscoveryPresentation() {
                         <div style={{ fontSize: 11, color: cap.color, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 8, fontWeight: 600 }}>
                           Qué observamos
                         </div>
-                        <p style={{ fontSize: 14, lineHeight: 1.7, color: "#B0D4C0" }}>{cap.what}</p>
+                        <p style={{ fontSize: 14, lineHeight: 1.7, color: "#1A2E23" }}>{cap.what}</p>
                       </div>
                       <div style={{
                         padding: "16px 20px", borderRadius: 12,
@@ -784,7 +784,7 @@ export default function DiscoveryPresentation() {
                         <div style={{ fontSize: 11, color: cap.color, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 6, fontWeight: 600 }}>
                           Qué habilita
                         </div>
-                        <p style={{ fontSize: 14, lineHeight: 1.6, color: "#E8F0EC" }}>{cap.enables}</p>
+                        <p style={{ fontSize: 14, lineHeight: 1.6, color: "#1A2E23" }}>{cap.enables}</p>
                       </div>
                     </div>
                   </div>
@@ -795,19 +795,19 @@ export default function DiscoveryPresentation() {
             <FadeIn delay={1.0}>
               <div style={{
                 marginTop: 48, padding: "28px 36px", borderRadius: 16,
-                border: "1px solid #1A3D2A",
-                background: "linear-gradient(135deg, #0A1F14, #0D2A1A)",
+                border: "1px solid #E0E8E4",
+                background: "#F8FAF9",
                 textAlign: "center"
               }}>
                 <p style={{
                   fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: 20, fontWeight: 600, color: "#E8F0EC", lineHeight: 1.5
+                  fontSize: 20, fontWeight: 600, color: "#1A2E23", lineHeight: 1.5
                 }}>
                   Estas cinco capacidades no pertenecen a un área.
                   <br />
                   <span style={{ color: "#00D67E" }}>Son la infraestructura invisible que conecta toda la transformación.</span>
                 </p>
-                <p style={{ fontSize: 13, color: "#5A8B6A", marginTop: 12 }}>
+                <p style={{ fontSize: 13, color: "#5A7566", marginTop: 12 }}>
                   Sin ellas, cada iniciativa resuelve un síntoma. Con ellas, el sistema evoluciona.
                 </p>
               </div>
@@ -839,7 +839,7 @@ export default function DiscoveryPresentation() {
                       Si no actuamos
                     </div>
                     {["Oportunidades de negocio que se cierran en otra compañía", "Costos operativos crecientes por gestión manual", "Brecha competitiva que se amplía cada trimestre", "Portfolio concentrado = exposición al riesgo"].map((item, i) => (
-                      <p key={i} style={{ fontSize: 14, color: "#B0D4C0", lineHeight: 1.6, marginBottom: 10, paddingLeft: 16, borderLeft: "2px solid #EF444433" }}>{item}</p>
+                      <p key={i} style={{ fontSize: 14, color: "#1A2E23", lineHeight: 1.6, marginBottom: 10, paddingLeft: 16, borderLeft: "2px solid #EF444433" }}>{item}</p>
                     ))}
                   </div>
                   <div style={{ padding: 32, borderRadius: 16, border: "1px solid #00D67E22", background: "#00D67E08" }}>
@@ -847,7 +847,7 @@ export default function DiscoveryPresentation() {
                       Si actuamos ahora
                     </div>
                     {["+20-30% revenue en Otros Riesgos", "-50.000 contactos evitables por mes", "Portfolio diversificado y rentable", "Plataforma preparada para el futuro"].map((item, i) => (
-                      <p key={i} style={{ fontSize: 14, color: "#B0D4C0", lineHeight: 1.6, marginBottom: 10, paddingLeft: 16, borderLeft: "2px solid #00D67E33" }}>{item}</p>
+                      <p key={i} style={{ fontSize: 14, color: "#1A2E23", lineHeight: 1.6, marginBottom: 10, paddingLeft: 16, borderLeft: "2px solid #00D67E33" }}>{item}</p>
                     ))}
                   </div>
                 </div>
@@ -859,11 +859,11 @@ export default function DiscoveryPresentation() {
                     border: "1px solid #00D67E22", textAlign: "center"
                   }}>
                     <p style={{
-                      fontFamily: "'Cormorant Garamond', serif", fontSize: 24, fontWeight: 600, color: "#E8F0EC"
+                      fontFamily: "'Cormorant Garamond', serif", fontSize: 24, fontWeight: 600, color: "#1A2E23"
                     }}>
                       El momento es ahora. La decisión es estratégica.
                     </p>
-                    <p style={{ fontSize: 14, color: "#5A8B6A", marginTop: 12 }}>
+                    <p style={{ fontSize: 14, color: "#5A7566", marginTop: 12 }}>
                       ROI consolidado estimado: 18-24 meses · Primeros resultados visibles en 90 días
                     </p>
                   </div>
