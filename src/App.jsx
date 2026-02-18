@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-const logoSrc = "/logo-triunfo.svg";
+const logoSrc = "/logo-verde.png";
 
 
 // ─── DATA ────────────────────────────────────────────────────────────
@@ -309,7 +309,7 @@ export default function DiscoveryPresentation() {
           style={{ display: "flex", alignItems: "center", gap: 12, cursor: "pointer" }}
           onClick={() => { setSection("home"); setActiveArea(null); }}
         >
-          <img src={logoSrc} alt="Triunfo Seguros" style={{ height: 28, opacity: 0.9 }} />
+          <img src={logoSrc} alt="Triunfo Seguros" style={{ height: 44, opacity: 0.9 }} />
         </div>
 
         {/* ✅ Botón hamburger (solo mobile) */}
