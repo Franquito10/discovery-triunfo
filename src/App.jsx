@@ -207,7 +207,7 @@ export default function DiscoveryPresentation() {
         .nav-item { cursor: pointer; padding: 10px 20px; border-radius: 100px; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; transition: all 0.3s; border: 1px solid transparent; color: #5A7566; }
         .nav-item:hover { border-color: #00D67E44; color: #1A2E23; }
         .nav-item.active { background: #00D67E18; border-color: #00D67E44; color: #00D67E; }
-        .org-node { cursor: pointer; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); border: 1px solid #E0E8E4; border-radius: 16px; padding: 24px; background: #FFFFFF; position: relative; overflow: hidden; }
+        .org-node { cursor: pointer; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); border: 1px solid #E0E8E4; border-radius: 16px; padding: 24px; background: linear-gradient(135deg, #F0FDF4 0%, #F8FAF9 100%); position: relative; overflow: hidden; box-shadow: 0 2px 8px rgba(0, 214, 126, 0.06); }
         .org-node::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--node-color); opacity: 0; transition: opacity 0.4s; }
         .org-node:hover { border-color: var(--node-color); transform: translateY(-4px); box-shadow: 0 12px 40px -8px var(--node-shadow); }
         .org-node:hover::before { opacity: 1; }
@@ -425,7 +425,7 @@ export default function DiscoveryPresentation() {
 
             {/* Stats ribbon */}
             <FadeIn delay={1.1}>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 24, marginTop: 60, paddingTop: 32, borderTop: "1px solid #E0E8E4" }}>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 24, marginTop: 60, paddingTop: 32, paddingBottom: 60, borderTop: "1px solid #E0E8E4" }}>
                 {[
                   { n: "5", label: "Áreas escuchadas" },
                   { n: "163K", label: "Contactos/mes en AC" },
